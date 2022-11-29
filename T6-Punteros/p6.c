@@ -25,21 +25,78 @@ int main(){
 
     int array[N][M];
 
+
+    
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
             int valor;
             printf("Introduce un valor para la coordenada (%d,%d): ", i, j);
             scanf("%d", &valor);
+            array[i][j] = valor;
         }
     }
 
-    int *primerElemento;
-    primerElemento = &array[0][0];
+    printf("\n");
+    //Pedimos las dos casillas
 
-    //*p2 = array[N-1][M-1];
+    int flag = 0;
+    int *primeraCasilla;
+    int *segundaCasilla;
 
-    printf("El valor de la primera casilla es: %d\n", *primerElemento);
-    //printf("El valor de la ultima casilla es: %d\n", *p2);
+    while(flag == 0){
+        int c1X = 0, c1Y = 0, c2X = 0, c2Y = 0;
+        
+        printf("Coordenadas de la primera casilla(X,Y): \n");
+        scanf("%d %d", &c1X, &c1Y);
+        if(c1X < 0 || c1Y < 0){
+            flag = 1;
+            break;
+        }
+        while(c1X >=N || c1Y >=M){
+            
+            printf("Valor erroneo de primera casilla, vuelva a introducir las coordenadas: \n");
+            scanf("%d %d", &c1X, &c1Y);
+        }
+        
+        primeraCasilla = &array[c1X][c1Y];
+        printf("El valor de la primera casilla es: %d\n", *primeraCasilla);
+
+        printf("\n");
+
+        printf("Coordenadas de la segunda casilla(X,Y): \n");
+        scanf("%d %d", &c2X, &c2Y);
+        if(c2X < 0 || c2Y < 0){
+            flag = 1;
+            break;
+        }
+        while(c2X >=N || c2Y >=M){
+            
+            printf("Valor erroneo de segunda casilla, vuelva a introducir las coordenadas: \n");
+            scanf("%d %d", &c2X, &c2Y);
+        }
+        
+        segundaCasilla = &array[c2X][c2Y];
+        printf("El valor de la segunda casilla es: %d\n", *segundaCasilla);
+
+        printf("\n");
+        int suma = *primeraCasilla + *segundaCasilla;
+        printf("La suma de las casillas es: %d\n", suma);
+        printf("\n");
+
+    }
+
+    
+    // primerElemento = &array[0][0];
+
+    
+    // ultimoElemento = &array[N-1][M-1];
+
+
+    // printf("El valor de la primera casilla es: %d\n", *primerElemento);
+    // printf("El valor de la ultima casilla es: %d\n", *ultimoElemento);
+
+    // int suma = *primerElemento + *ultimoElemento;
+    // printf("La suma de estas dos casillas es: %d\n", suma);
  
 
     
